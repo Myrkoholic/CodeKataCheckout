@@ -1,0 +1,2 @@
+# CodeKataCheckout
+Supermarket pricing
