@@ -9,19 +9,19 @@ namespace CodeKataCheckout
 		double Discount(Dictionary<string, Item> items);
 	}
 
-	public class QuantityPriceDiscount
-	{
-		public int Quantity;
-		public double Price;
-	}
-
-	public class NullPricingRules : IPricingRules
+    public class NullPricingRules : IPricingRules
 	{
 		public double Discount(Dictionary<string, Item> items)
 		{
 			return 0.0;
 		}
 	}
+
+    public class QuantityPriceDiscount
+    {
+        public int Quantity;
+        public double Price;
+    }
 
 	public class QuantityPriceRules : IPricingRules
 	{
@@ -93,17 +93,8 @@ namespace CodeKataCheckout
 
 		public static double Price(string item)
 		{
-			var price = 0.0;
-
-			try
-			{
-				_priceList.TryGetValue(item, out price);
-			}
-			catch (Exception)
-			{
-				
-			}
-
+		    var price = 0.0;
+			_priceList.TryGetValue(item, out price);
 			return price;
 		}
 	}
@@ -130,7 +121,7 @@ namespace CodeKataCheckout
 			    }
 			    else
 			    {
-				    _items.Add(code, new Item(code.ToString(), PriceListing.Price(code)));
+				    _items.Add(code, new Item(code, PriceListing.Price(code)));
 			    }
 		    }
 	    }
