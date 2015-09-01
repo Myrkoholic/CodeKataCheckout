@@ -3,3 +3,5 @@
 *.ncrunchsolution
 obj/
 bin/
+*.cache
+*.user

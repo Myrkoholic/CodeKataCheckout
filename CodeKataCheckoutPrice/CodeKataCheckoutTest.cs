@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using CodeKataCheckout;
 using FluentAssertions;
 
@@ -127,5 +126,45 @@ namespace CodeKataCheckoutPrice
 			co.Scan("B");
 			co.Total().Should().Be(175.00);
 		}
+
+	    [Test]
+	    public void TestProductABCPricingRules()
+	    {
+            var co = new Checkout();
+            co.Scan("ABC");
+            co.Total().Should().Be(90.00);
+	    }
+
+        [Test]
+        public void TestProductABCCPricingRules()
+        {
+            var co = new Checkout();
+            co.Scan("ABC");
+            co.Total().Should().Be(110.00);
+        }
+
+        [Test]
+        public void TestProductABCABCPricingRules()
+        {
+            var co = new Checkout();
+            co.Scan("ABC");
+            co.Total().Should().Be(180.00);
+        }
+
+        [Test]
+        public void TestTotalPricing200Rules()
+        {
+            var co = new Checkout();
+            co.Scan("AAAAA");
+            co.Total().Should().Be(225.00);
+        }
+
+        [Test]
+        public void TestTotalPricing300Rules()
+        {
+            var co = new Checkout();
+            co.Scan("AAAAAAA");
+            co.Total().Should().Be(297.50);
+        }
 	}
 }
